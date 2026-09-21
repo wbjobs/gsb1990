@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diff Viewer — 文本对比工具</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <span class="logo">Diff Viewer</span>
+    <label class="file-btn">左文件<input type="file" id="left-file" hidden></label>
+    <span id="left-name" class="file-name"></span>
+    <label class="file-btn">右文件<input type="file" id="right-file" hidden></label>
+    <span id="right-name" class="file-name"></span>
+    <button id="demo-btn">加载示例</button>
+    <button id="compare-btn" class="primary">开始对比</button>
+    <button id="edit-btn" class="hidden">返回编辑</button>
+    <span class="sep"></span>
+    <button id="prev-btn" title="上一处变更">↑ 上一处</button>
+    <button id="next-btn" title="下一处变更">↓ 下一处</button>
+    <button id="collapse-btn">全部折叠</button>
+    <button id="expand-btn">全部展开</button>
+    <label class="ctx-label">上下文
+      <select id="context-sel">
+        <option value="1">1 行</option>
+        <option value="3" selected>3 行</option>
+        <option value="5">5 行</option>
+        <option value="10">10 行</option>
+      </select>
+    </label>
+    <span id="spinner" class="spinner hidden" title="计算中…"></span>
+  </header>
+
+  <section id="input-panel" class="input-panel">
+    <div class="input-col">
+      <div class="input-title">原始文本（左）</div>
+      <textarea id="left-text" spellcheck="false" placeholder="粘贴文本，或点击上方「左文件」选择文件"></textarea>
+    </div>
+    <div class="input-col">
+      <div class="input-title">对比文本（右）</div>
+      <textarea id="right-text" spellcheck="false" placeholder="粘贴文本，或点击上方「右文件」选择文件"></textarea>
+    </div>
+  </section>
+
+  <section id="diff-view" class="diff-view hidden">
+    <div id="status" class="status"></div>
+    <div class="panes">
+      <div class="pane" id="pane-left">
+        <div class="scroll"><div class="spacer"><div class="window"></div></div></div>
+      </div>
+      <canvas id="minimap" title="变更分布图，点击跳转"></canvas>
+      <div class="pane" id="pane-right">
+        <div class="scroll"><div class="spacer"><div class="window"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="toasts" class="toasts"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
