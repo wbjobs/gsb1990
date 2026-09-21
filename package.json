@@ -1,0 +1,11 @@
+{
+  "name": "diff-viewer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "零构建的 Diff 查看器：Myers diff、折叠、同步滚动、Web Worker、Canvas 缩略图、IndexedDB 缓存",
+  "scripts": {
+    "test": "node test/run.test.mjs && node test/dom.test.mjs && node test/storage.test.mjs && node --experimental-vm-modules test/worker.test.mjs",
+    "serve": "python3 -m http.server 8899"
+  }
+}
